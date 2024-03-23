@@ -1,0 +1,4 @@
+src/db/generated
+dist
+.husky
+node_modules
