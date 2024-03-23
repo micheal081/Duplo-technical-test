@@ -12,6 +12,8 @@ import { MongoPrismaService } from './database/mongo-prisma.service';
 import { PostgresPrismaService } from './database/postgres-prisma.service';
 
 import { ENV, Environment } from '@/app.environment';
+// eslint-disable-next-line eslint-comments/disable-enable-pair
+/* eslint-disable @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-explicit-any */
 
 async function bootstrap(): Promise<void> {
   // Open Telemetry SDK initialization
