@@ -5,13 +5,12 @@ import { NestFactory } from '@nestjs/core';
 import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
+import { ENV, Environment } from './app.environment';
 import { AppModule } from './app.module';
 import { httpOptions } from './config/httpAdapter';
 import otelSdk from './config/tracer/otel-tracer';
 import { MongoPrismaService } from './database/mongo-prisma.service';
 import { PostgresPrismaService } from './database/postgres-prisma.service';
-
-import { ENV, Environment } from '@/app.environment';
 
 async function bootstrap(): Promise<void> {
   // Open Telemetry SDK initialization
