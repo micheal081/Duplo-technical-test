@@ -12,14 +12,46 @@ datasource db {
 }
 
 model User {
-    pk          Int      @id @default(autoincrement())
-    id          String   @unique @default(uuid()) @db.Uuid
-    email       String   @unique
-    phoneNumber String?  @unique @map("phone_number")
+    id          String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+    name        String    @unique
+    email       String    @unique
+    phoneNumber String?   @unique @map("phone_number")
     password    String?
-    createdAt   DateTime @default(now()) @map("created_at")
-    updatedAt   DateTime @updatedAt @map("update_at")
+    createdAt   DateTime  @default(now()) @map("created_at")
+    updatedAt   DateTime  @default(now()) @updatedAt @map("updated_at")
+    deletedAt   DateTime? @map("deleted_at")
 
-    @@unique([pk, id])
+    Order Order[]
+
+    @@index([email])
     @@map("users")
+}
+
+model Order {
+    id              String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+    userId          String      @map("user_id") @db.Uuid
+    productId       String?     @map("product_id")
+    productName     String      @map("product_name")
+    quantity        Int
+    pricePerUnit    Int         @map("price_per_unit")
+    totalPrice      Int         @map("total_price")
+    shippingAddress String?     @map("shipping_address")
+    status          OrderStatus
+    createdAt       DateTime    @default(now()) @map("created_at")
+    updatedAt       DateTime    @default(now()) @updatedAt @map("updated_at")
+    deletedAt       DateTime?   @map("deleted_at")
+
+    User User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@index([userId])
+    @@index([productId])
+    @@index([createdAt])
+    @@map("orders")
+}
+
+enum OrderStatus {
+    PENDING
+    PROCESSING
+    SHIPPED
+    DELIVERED
 }
