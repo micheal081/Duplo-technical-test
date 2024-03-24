@@ -20,6 +20,8 @@ lerna-debug.log*
 # Tests
 /coverage
 /.nyc_output
+yarn.lock
+package-lock.json
 
 # IDEs and editors
 /.idea
