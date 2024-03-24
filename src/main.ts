@@ -9,7 +9,6 @@ import { Logger } from 'nestjs-pino';
 import { AppModule } from './app.module';
 import { httpOptions } from './config/httpAdapter';
 import otelSdk from './config/tracer/otel-tracer';
-import { MongoPrismaService } from './database/mongo-prisma.service';
 import { PostgresPrismaService } from './database/postgres-prisma.service';
 
 import { ENV, Environment } from '@/app.environment';
@@ -60,7 +59,6 @@ async function bootstrap(): Promise<void> {
   if (ENV.NODE_ENV === Environment.Production) {
     app.enableShutdownHooks();
     app.get(PostgresPrismaService);
-    app.get(MongoPrismaService);
     app.enableShutdownHooks();
   }
 

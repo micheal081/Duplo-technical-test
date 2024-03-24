@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
 import { LoggerModule } from 'nestjs-pino';
 
 import { DatabaseModule } from './database/database.module';
@@ -10,6 +11,8 @@ import { CreditModule } from './resources/credit/credit.module';
 import { OrderModule } from './resources/order/order.module';
 import { UserModule } from './resources/user/user.module';
 
+import { ENV } from '@/app.environment';
+
 @Module({
   providers: [],
   imports: [
@@ -19,6 +22,7 @@ import { UserModule } from './resources/user/user.module';
       envFilePath: `../.env`,
       validate,
     }),
+    MongooseModule.forRoot(ENV.MONGO_DATABASE_URL),
     DatabaseModule,
     UserModule,
     OrderModule,

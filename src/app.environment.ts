@@ -15,4 +15,6 @@ export const ENV = {
   PORT: get('PORT').default(3000).asPortNumber(),
   OTEL_ENABLED: get('OTEL_ENABLED').default(0).asBool(),
   JWT_SECRET_KEY: get('JWT_SECRET_KEY').asString(),
+  POSTGRES_DATABASE_URL: get('POSTGRES_DATABASE_URL').asString(),
+  MONGO_DATABASE_URL: get('MONGO_DATABASE_URL').asString(),
 };

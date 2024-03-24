@@ -23,10 +23,7 @@
     "postgres:migrate:deploy": "npx prisma migrate deploy --schema src/prisma/postgres/schema.prisma --preview-feature",
     "prisma": "prisma",
     "prisma:postgres:dbpush": "npx prisma db push --schema src/prisma/postgres/schema.prisma",
-    "prisma:mongo:dbpush": "npx prisma db push --schema src/prisma/mongo/schema.prisma",
-    "prisma:generate:postgres_client": "prisma generate --schema=src/prisma/postgres/schema.prisma",
-    "prisma:generate:mongo_client": "prisma generate --schema=src/prisma/mongo/schema.prisma",
-    "prisma:generate:db_clients": "prisma generate --schema src/prisma/postgres/schema.prisma && prisma generate --schema src/prisma/mongo/schema.prisma"
+    "prisma:generate:postgres_client": "prisma generate --schema=src/prisma/postgres/schema.prisma"
   },
   "dependencies": {
     "@fastify/cors": "^8.3.0",
@@ -36,6 +33,7 @@
     "@nestjs/config": "^3.2.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/jwt": "^10.2.0",
+    "@nestjs/mongoose": "^10.0.4",
     "@nestjs/passport": "^10.0.3",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/platform-fastify": "^9.4.3",
@@ -53,7 +51,9 @@
     "dotenv": "^16.4.5",
     "env-var": "^7.4.1",
     "fastify": "^4.25.2",
+    "mongoose": "^8.2.3",
     "nestjs-pino": "^3.2.0",
+    "nestjs-prisma": "^0.23.0",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "qs": "^6.12.0",
