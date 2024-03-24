@@ -3,6 +3,8 @@ import { ApiTags } from '@nestjs/swagger';
 import { User } from '@prisma/postgres/client';
 
 import { CreateUserDto } from './dto/create-user-dto';
+import { LoginUserDto } from './dto/login-user-dto';
+import { AccessToken } from './types';
 import { UserService } from './user.service';
 
 @ApiTags('User')
@@ -13,5 +15,10 @@ export class UserController {
   @Post('register')
   register(@Body() payload: CreateUserDto): Promise<Partial<User>> {
     return this.userService.register(payload);
+  }
+
+  @Post('login')
+  login(@Body() payload: LoginUserDto): Promise<AccessToken> {
+    return this.userService.login(payload);
   }
 }
