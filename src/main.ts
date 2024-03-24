@@ -4,6 +4,7 @@ import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { Logger } from 'nestjs-pino';
 
 import { AppModule } from './app.module';
 import { httpOptions } from './config/httpAdapter';
@@ -25,6 +26,10 @@ async function bootstrap(): Promise<void> {
   const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter(httpOptions), {
     bufferLogs: true,
   });
+
+  // Bind Logger
+  app.useLogger(app.get(Logger));
+  app.flushLogs();
 
   // Bind fastify middlewares
   await app.register(helmet as any);
