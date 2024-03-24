@@ -89,6 +89,10 @@ export class EnvironmentVariables {
   @IsBoolean()
   @IsNotEmpty()
   public OTEL_ENABLED: boolean;
+
+  @IsString()
+  @IsNotEmpty()
+  public JWT_SECRET_KEY: string;
 }
 
 export function validate(config: Record<string, unknown>): EnvironmentVariables {
