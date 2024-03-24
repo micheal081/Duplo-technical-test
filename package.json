@@ -26,7 +26,7 @@
     "prisma:mongo:dbpush": "npx prisma db push --schema src/prisma/mongo/schema.prisma",
     "prisma:generate:postgres_client": "prisma generate --schema=src/prisma/postgres/schema.prisma",
     "prisma:generate:mongo_client": "prisma generate --schema=src/prisma/mongo/schema.prisma",
-    "prisma:generate:db_clients": "prisma generate --schema src/prisma/postgres/schema.prisma && prisma generate --schema prisma/mongo/schema.prisma"
+    "prisma:generate:db_clients": "prisma generate --schema src/prisma/postgres/schema.prisma && prisma generate --schema src/prisma/mongo/schema.prisma"
   },
   "dependencies": {
     "@fastify/cors": "^8.3.0",

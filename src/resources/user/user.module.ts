@@ -10,6 +10,7 @@ import { HashModule } from '@/providers/hash/hash.module';
 
 @Module({
   imports: [DatabaseModule, HashModule, AuthModule],
+  exports: [UserService],
   providers: [UserService],
   controllers: [UserController],
 })
