@@ -93,6 +93,14 @@ export class EnvironmentVariables {
   @IsString()
   @IsNotEmpty()
   public JWT_SECRET_KEY: string;
+
+  @IsString()
+  @IsNotEmpty()
+  public POSTGRES_DATABASE_URL: string;
+
+  @IsString()
+  @IsNotEmpty()
+  public MONGO_DATABASE_URL: string;
 }
 
 export function validate(config: Record<string, unknown>): EnvironmentVariables {
