@@ -59,4 +59,17 @@ export class UserService {
     const token = this.authService.generateToken(payload);
     return token;
   }
+
+  async getUserById(id: string): Promise<Partial<User>> {
+    return this.postgresPrisma.user.findUnique({
+      where: {
+        id,
+      },
+      select: {
+        name: true,
+        email: true,
+        phoneNumber: true,
+      },
+    });
+  }
 }

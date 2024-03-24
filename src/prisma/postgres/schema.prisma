@@ -30,13 +30,15 @@ model User {
 model Order {
     id              String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
     userId          String      @map("user_id") @db.Uuid
+    businessName    String      @map("business_name")
+    customerName    String      @map("customer_name")
     productId       String?     @map("product_id")
     productName     String      @map("product_name")
     quantity        Int
     pricePerUnit    Int         @map("price_per_unit")
     totalPrice      Int         @map("total_price")
     shippingAddress String?     @map("shipping_address")
-    status          OrderStatus
+    status          OrderStatusEnum
     createdAt       DateTime    @default(now()) @map("created_at")
     updatedAt       DateTime    @default(now()) @updatedAt @map("updated_at")
     deletedAt       DateTime?   @map("deleted_at")
@@ -49,7 +51,7 @@ model Order {
     @@map("orders")
 }
 
-enum OrderStatus {
+enum OrderStatusEnum {
     PENDING
     PROCESSING
     SHIPPED
