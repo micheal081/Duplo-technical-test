@@ -28,8 +28,18 @@
 
 ## Installation
 
+# Database
+```bash
+$ You will need to paste your mongodb and postgresurl database url in the .env file and docker-compose.yml file
+```
+
 ```bash
 $ npm install
+```
+
+# prisma
+```bash
+$ npm run prisma:generate:postgres_client
 ```
 
 ## Running the app
@@ -45,6 +55,19 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+## Running the app through Docker 
+
+```bash
+# Build the container
+$ sudo docker build -t duplo_technical_test:latest . && sudo docker image prune -f
+
+# Build the image
+$ sudo docker run -p 3000:3000 --env-file .env duplo_technical_test:latest
+
+# Start the server
+$ docker-compose up
+```
+
 ## Test
 
 ```bash
@@ -56,6 +79,21 @@ $ npm run test:e2e
 
 # test coverage
 $ npm run test:cov
+```
+
+# View and Test API documentation on Swagger
+<a href="http://localhost:3000/swagger" target="_blank">http://localhost:3000/swagger</a>
+
+# Authenticate Swagger to test API/Routes
+```bash
+# Create an account
+$ Create an account using the register API
+
+# Get access token
+$ Login with the newly created account to get an access token
+
+# Authenticate Swagger to test
+$ Copy and paste the access token at the lock icon in the top right corner of the page
 ```
 
 ## Support
