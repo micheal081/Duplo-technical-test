@@ -52,3 +52,4 @@ CMD ["npm", "run", "start:prod"]
 # Command to run
 # sudo docker build -t duplo_technical_test:latest . && sudo docker image prune -f
 # sudo docker run -p 3000:3000 --env-file .env duplo_technical_test:latest 
+# docker-compose up
