@@ -1,7 +1,7 @@
 import { Body, Controller, Post, Get, UseGuards, Param, Query } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
-import { Order } from '@prisma/postgres/client';
+import { Order } from '@prisma/client';
 
 import { NewOrderDto } from './dto/new-order-dto';
 import { OrderService } from './order.service';

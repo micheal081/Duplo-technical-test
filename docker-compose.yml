@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  web:
+    image: duplo_technical_test:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: development
+      POSTGRES_DATABASE_URL: 
+      MONGO_DATABASE_URL: 
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+
+

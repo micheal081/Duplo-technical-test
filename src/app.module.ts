@@ -11,8 +11,6 @@ import { CreditModule } from './resources/credit/credit.module';
 import { OrderModule } from './resources/order/order.module';
 import { UserModule } from './resources/user/user.module';
 
-import { ENV } from '@/app.environment';
-
 @Module({
   providers: [],
   imports: [
@@ -22,7 +20,11 @@ import { ENV } from '@/app.environment';
       envFilePath: `../.env`,
       validate,
     }),
-    MongooseModule.forRoot(ENV.MONGO_DATABASE_URL),
+    MongooseModule.forRootAsync({
+      useFactory: () => ({
+        uri: process.env.MONGO_DATABASE_URL,
+      }),
+    }),
     DatabaseModule,
     UserModule,
     OrderModule,
