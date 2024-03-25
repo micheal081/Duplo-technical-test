@@ -1,4 +1,4 @@
-import { OrderStatusEnum } from '@prisma/postgres/client';
+import { OrderStatusEnum } from '@prisma/client';
 
 export interface OrderData {
   userId: string;

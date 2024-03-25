@@ -1,5 +1,5 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
-import { User } from '@prisma/postgres/client';
+import { User } from '@prisma/client';
 
 import { AuthService } from '../auth/auth.service';
 import { JwtPayload } from '../auth/strategies/jwt-payload.interface';
