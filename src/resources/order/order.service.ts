@@ -42,8 +42,10 @@ export class OrderService {
       orderData.productId = productId;
     }
 
+    // This log/saves the transactions data to mongoDB
     await this.transaction.create(orderData);
 
+    // This saves the transaction data to postgresSQL
     return this.postgresPrisma.order.create({
       data: orderData,
       select: {
@@ -165,7 +167,7 @@ export class OrderService {
   }
 
   async calculateCreditScore(userId: string): Promise<number> {
-    // Retrieve all orders for the given user
+    // Retrieve all orders for the given user FROM MONGODB
     const orders = await this.transaction.find({ userId });
 
     // Calculate total revenue
